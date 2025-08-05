@@ -14,7 +14,7 @@ public class StoreApplication {
 
     // var orderService = new OrderService();
     // orderService.setPaymentService(new StripePaymentService());
-    orderService.placeOrder();
+    // orderService.placeOrder();
 
     // orderService = new OrderService(new PayPalPaymentService());
     // orderService.setPaymentService(new PayPalPaymentService());
