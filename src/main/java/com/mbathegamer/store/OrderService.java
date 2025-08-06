@@ -1,6 +1,5 @@
 package com.mbathegamer.store;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -11,7 +10,9 @@ public class OrderService {
   // }
 
   // @Autowired
-  public OrderService(@Qualifier("paypal") PaymentService paymentService) {
+  public OrderService(
+      // @Qualifier("paypal")
+      PaymentService paymentService) {
     this.paymentService = paymentService;
   }
 
