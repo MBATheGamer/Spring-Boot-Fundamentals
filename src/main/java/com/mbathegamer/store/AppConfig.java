@@ -10,6 +10,7 @@ public class AppConfig {
   private String paymentGateaway;
 
   @Bean
+  // @Lazy
   PaymentService stripe() {
     return new StripePaymentService();
   }
