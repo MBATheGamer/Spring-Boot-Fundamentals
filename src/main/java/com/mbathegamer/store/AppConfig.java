@@ -3,7 +3,6 @@ package com.mbathegamer.store;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
 
 @Configuration
 public class AppConfig {
@@ -12,7 +11,7 @@ public class AppConfig {
 
   @Bean
   // @Lazy
-  @Scope("prototype")
+  // @Scope("prototype")
   PaymentService stripe() {
     return new StripePaymentService();
   }
