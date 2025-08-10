@@ -10,8 +10,11 @@ public class StoreApplication {
     ConfigurableApplicationContext context = SpringApplication.run(StoreApplication.class, args);
 
     var userService = context.getBean(UserService.class);
-    userService.registerUser(new User(1L, "johndoe@gmail.com", "abc123", "John Doe"));
-    userService.registerUser(new User(1L, "johndoe@gmail.com", "abc123", "John Doe"));
+    userService.registerUser(
+        new User(1L, "johndoe@gmail.com", "abc123", "John Doe"));
+    // userService.registerUser(
+    // new User(1L, "johndoe@gmail.com", "abc123", "John Doe")
+    // );
 
     // var resource = context.getBean(HeavyResource.class);
 
