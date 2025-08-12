@@ -1,14 +1,20 @@
 package com.mbathegamer.store;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
+
+import com.mbathegamer.store.entities.User;
 
 @SpringBootApplication
 public class StoreApplication {
   public static void main(String[] args) {
-    ConfigurableApplicationContext context = SpringApplication.run(StoreApplication.class, args);
+    // ApplicationContext context = SpringApplication.run(
+    // StoreApplication.class,
+    // args);
 
-    context.close();
+    var user = User.builder()
+        .name("John")
+        .email("john@gmail.com")
+        .password("password")
+        .build();
   }
 }
