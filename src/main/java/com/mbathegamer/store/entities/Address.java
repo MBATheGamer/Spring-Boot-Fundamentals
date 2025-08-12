@@ -12,19 +12,22 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "addresses")
+public class Address {
   @Id
   @Column(name = "id", nullable = false)
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column(name = "name", nullable = false)
-  private String name;
+  @Column(name = "street", nullable = false)
+  private String street;
 
-  @Column(name = "email", nullable = false)
-  private String email;
+  @Column(name = "city", nullable = false)
+  private String city;
 
-  @Column(name = "email", nullable = false)
-  private String password;
+  @Column(name = "zip", nullable = false)
+  private String zip;
+
+  @Column(name = "state", nullable = false)
+  private String state;
 }
