@@ -2,7 +2,6 @@ package com.mbathegamer.store;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.mbathegamer.store.entities.Address;
 import com.mbathegamer.store.entities.User;
 
 @SpringBootApplication
@@ -18,14 +17,7 @@ public class StoreApplication {
         .password("password")
         .build();
 
-    var address = Address.builder()
-        .street("street")
-        .city("city")
-        .state("state")
-        .zip("zip")
-        .build();
-
-    user.addAddress(address);
+    user.addTag("tag1");
 
     System.out.println(user);
   }
