@@ -2,6 +2,7 @@ package com.mbathegamer.store;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.mbathegamer.store.entities.Profile;
 import com.mbathegamer.store.entities.User;
 
 @SpringBootApplication
@@ -17,7 +18,12 @@ public class StoreApplication {
         .password("password")
         .build();
 
-    user.addTag("tag1");
+    var profile = Profile.builder()
+        .bio("bio")
+        .build();
+
+    user.setProfile(profile);
+    profile.setUser(user);
 
     System.out.println(user);
   }
