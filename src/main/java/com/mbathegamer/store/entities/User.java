@@ -51,6 +51,11 @@ public class User {
   @JoinTable(name = "user_tags", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
   private Set<Tag> tags = new HashSet<>();
 
+  @ManyToMany
+  @Builder.Default
+  @JoinTable(name = "wishlist", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "product_id"))
+  private Set<Product> wishlist = new HashSet<>();
+
   @OneToOne(mappedBy = "user")
   private Profile profile;
 
