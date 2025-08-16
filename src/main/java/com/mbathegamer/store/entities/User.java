@@ -16,8 +16,10 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -26,6 +28,8 @@ import lombok.ToString;
 @Entity
 @Builder
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "users")
 public class User {
   @Id
@@ -39,7 +43,7 @@ public class User {
   @Column(name = "email", nullable = false)
   private String email;
 
-  @Column(name = "email", nullable = false)
+  @Column(name = "password", nullable = false)
   private String password;
 
   @Builder.Default
