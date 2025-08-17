@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
-import com.mbathegamer.store.repositories.UserRepository;
+import com.mbathegamer.store.services.UserService;
 
 @SpringBootApplication
 public class StoreApplication {
@@ -13,7 +13,7 @@ public class StoreApplication {
         StoreApplication.class,
         args);
 
-    var repository = context.getBean(UserRepository.class);
+    var service = context.getBean(UserService.class);
 
     // var user = User.builder()
     // .name("John")
@@ -28,6 +28,8 @@ public class StoreApplication {
 
     // repository.findAll().forEach(user -> System.out.println(user.getEmail()));
 
-    repository.deleteById(1L);
+    // repository.deleteById(1L);
+
+    service.showEntityState();
   }
 }
