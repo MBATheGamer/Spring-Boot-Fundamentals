@@ -32,6 +32,8 @@ public class StoreApplication {
 
     // service.showEntityState();
 
-    service.showRelatedEntities();
+    // service.showRelatedEntities();
+
+    service.fetchAddress();
   }
 }

@@ -3,6 +3,7 @@ package com.mbathegamer.store.services;
 import org.springframework.stereotype.Service;
 
 import com.mbathegamer.store.entities.User;
+import com.mbathegamer.store.repositories.AddressRepository;
 import com.mbathegamer.store.repositories.ProfileRepository;
 import com.mbathegamer.store.repositories.UserRepository;
 
@@ -13,6 +14,7 @@ import lombok.AllArgsConstructor;
 @Service
 @AllArgsConstructor
 public class UserService {
+  private final AddressRepository addressRepository;
   private final UserRepository userRepository;
   private final ProfileRepository profileRepository;
 
@@ -45,5 +47,11 @@ public class UserService {
   public void showRelatedEntities() {
     var profile = profileRepository.findById(2L).orElseThrow();
     System.out.println(profile.getBio());
+  }
+
+  public void fetchAddress() {
+    var address = addressRepository.findById(1L).orElseThrow();
+
+    System.out.println(address.getStreet());
   }
 }
