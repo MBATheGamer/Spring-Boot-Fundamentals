@@ -30,6 +30,8 @@ public class StoreApplication {
 
     // repository.deleteById(1L);
 
-    service.showEntityState();
+    // service.showEntityState();
+
+    service.showRelatedEntities();
   }
 }
