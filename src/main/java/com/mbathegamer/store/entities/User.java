@@ -48,7 +48,10 @@ public class User {
   private String password;
 
   @Builder.Default
-  @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
+  @OneToMany(mappedBy = "user", cascade = {
+      CascadeType.PERSIST,
+      CascadeType.REMOVE
+  }, orphanRemoval = true)
   private final List<Address> addresses = new ArrayList<>();
 
   @ManyToMany
@@ -61,7 +64,7 @@ public class User {
   @JoinTable(name = "wishlist", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "product_id"))
   private Set<Product> wishlist = new HashSet<>();
 
-  @OneToOne(mappedBy = "user")
+  @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
   private Profile profile;
 
   public void addAddress(Address address) {
