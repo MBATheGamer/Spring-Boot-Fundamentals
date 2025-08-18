@@ -2,6 +2,7 @@ package com.mbathegamer.store.services;
 
 import org.springframework.stereotype.Service;
 
+import com.mbathegamer.store.entities.Address;
 import com.mbathegamer.store.entities.User;
 import com.mbathegamer.store.repositories.AddressRepository;
 import com.mbathegamer.store.repositories.ProfileRepository;
@@ -53,5 +54,25 @@ public class UserService {
     var address = addressRepository.findById(1L).orElseThrow();
 
     System.out.println(address.getStreet());
+  }
+
+  public void persistRelated() {
+    var user = User.builder()
+        .name("John Doe")
+        .email("john.doe@example.com")
+        .password("password")
+        .build();
+
+    var address = Address.builder()
+        .street("street")
+        .city("city")
+        .state("state")
+        .zip("zip")
+        .build();
+
+    user.addAddress(address);
+
+    userRepository.save(user);
+    // addressRepository.save(address);
   }
 }
