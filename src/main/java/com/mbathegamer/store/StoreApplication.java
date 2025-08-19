@@ -38,6 +38,7 @@ public class StoreApplication {
 
     // service.persistRelated();
 
-    service.deleteRelated();
+    // service.deleteRelated();
+    service.manageProducts();
   }
 }

@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import com.mbathegamer.store.entities.Address;
 import com.mbathegamer.store.entities.User;
 import com.mbathegamer.store.repositories.AddressRepository;
+import com.mbathegamer.store.repositories.CategoryRepository;
+import com.mbathegamer.store.repositories.ProductRepository;
 import com.mbathegamer.store.repositories.ProfileRepository;
 import com.mbathegamer.store.repositories.UserRepository;
 
@@ -15,6 +17,8 @@ import lombok.AllArgsConstructor;
 @Service
 @AllArgsConstructor
 public class UserService {
+  private final ProductRepository productRepository;
+  private final CategoryRepository categoryRepository;
   private final AddressRepository addressRepository;
   private final UserRepository userRepository;
   private final ProfileRepository profileRepository;
@@ -82,5 +86,29 @@ public class UserService {
     var address = user.getAddresses().getFirst();
     user.removeAddress(address);
     userRepository.save(user);
+  }
+
+  @Transactional
+  public void manageProducts() {
+    // var category = new Category("category1");
+
+    // var category = categoryRepository.findById(1L).orElseThrow();
+
+    // var product = Product.builder()
+    // .name("product1")
+    // .description("description1")
+    // .price(BigDecimal.valueOf(1))
+    // .category(category)
+    // .build();
+
+    // productRepository.save(product);
+
+    // var user = userRepository.findById(2L).orElseThrow();
+    // var products = productRepository.findAll();
+
+    // products.forEach(user::addFavoriteProduct);
+    // userRepository.save(user);
+
+    productRepository.deleteById(4L);
   }
 }

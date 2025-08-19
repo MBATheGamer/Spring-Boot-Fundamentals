@@ -82,4 +82,8 @@ public class User {
     tags.add(tag);
     tag.getUsers().add(this);
   }
+
+  public void addFavoriteProduct(Product product) {
+    wishlist.add(product);
+  }
 }
