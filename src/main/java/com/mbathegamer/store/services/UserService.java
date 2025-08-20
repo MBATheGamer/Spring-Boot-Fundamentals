@@ -1,5 +1,7 @@
 package com.mbathegamer.store.services;
 
+import java.math.BigDecimal;
+
 import org.springframework.stereotype.Service;
 
 import com.mbathegamer.store.entities.Address;
@@ -110,5 +112,10 @@ public class UserService {
     // userRepository.save(user);
 
     productRepository.deleteById(4L);
+  }
+
+  @Transactional
+  public void updateProductPrices() {
+    productRepository.updatePriceByCategory(BigDecimal.valueOf(10), (byte) 1);
   }
 }

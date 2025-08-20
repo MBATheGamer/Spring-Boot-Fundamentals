@@ -39,6 +39,7 @@ public class StoreApplication {
     // service.persistRelated();
 
     // service.deleteRelated();
-    service.manageProducts();
+    // service.manageProducts();
+    service.updateProductPrices();
   }
 }
