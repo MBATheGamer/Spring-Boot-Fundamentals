@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,8 +17,10 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -26,6 +29,8 @@ import lombok.ToString;
 @Entity
 @Builder
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "users")
 public class User {
   @Id
@@ -39,11 +44,14 @@ public class User {
   @Column(name = "email", nullable = false)
   private String email;
 
-  @Column(name = "email", nullable = false)
+  @Column(name = "password", nullable = false)
   private String password;
 
   @Builder.Default
-  @OneToMany(mappedBy = "user")
+  @OneToMany(mappedBy = "user", cascade = {
+      CascadeType.PERSIST,
+      CascadeType.REMOVE
+  }, orphanRemoval = true)
   private final List<Address> addresses = new ArrayList<>();
 
   @ManyToMany
@@ -56,7 +64,7 @@ public class User {
   @JoinTable(name = "wishlist", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "product_id"))
   private Set<Product> wishlist = new HashSet<>();
 
-  @OneToOne(mappedBy = "user")
+  @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
   private Profile profile;
 
   public void addAddress(Address address) {
@@ -73,5 +81,9 @@ public class User {
     var tag = new Tag(tagName);
     tags.add(tag);
     tag.getUsers().add(this);
+  }
+
+  public void addFavoriteProduct(Product product) {
+    wishlist.add(product);
   }
 }

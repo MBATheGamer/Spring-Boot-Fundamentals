@@ -11,11 +11,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
 @Table(name = "categories")
 public class Category {
   @Id
@@ -28,4 +30,8 @@ public class Category {
 
   @OneToMany(mappedBy = "category")
   private Set<Product> products = new HashSet<>();
+
+  public Category(String name) {
+    this.name = name;
+  }
 }
